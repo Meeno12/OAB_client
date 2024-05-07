@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { Outlet, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
-function App() {
+export default function App() {
+  const [init, setInit] = useState(false);
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.addEventListener("load", (e) => {
+      const loadingScreen = document.getElementById("loading");
+      loadingScreen.style.opacity = 0;
+      setTimeout(() => {
+        setInit(true)
+        loadingScreen.remove();
+      }, 300)
+    })
+    const loggedIn = localStorage.getItem("user");
+    if (loggedIn) {
+      dispatch({ type: "SET_USER", payload: true })
+    }
+  }, []);
+  
+
+  const hideNav = () => {
+    if (["/login", "/register"].includes(location.pathname)) return true;
+    return false;
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {!hideNav() && <Navbar />}
+      <Outlet context={{init}}/>
     </div>
   );
 }
-
-export default App;

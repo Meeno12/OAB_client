@@ -142,11 +142,11 @@ export default function UploadMusic() {
     switch (page) {
       case 0:
         return (
-          <div className="px-8">
-            <label onDrop={dropFile} onDragOver={(e) => e.preventDefault()} className="tooltip w-full aspect-video border-4 border-dashed flex flex-col justify-center items-center">
+          <div className="md:px-8">
+            <label onDrop={dropFile} onDragOver={(e) => e.preventDefault()} className="tooltip w-full aspect-[9/16] md:aspect-video border-4 border-dashed flex flex-col justify-center items-center">
               <div className="text-center text-slate-400 relative">
-                <FontAwesomeIcon className="h-32 mb-4 w-32" icon="file-audio" />
-                <div className="text-lg whitespace-pre-wrap">
+                <FontAwesomeIcon className="mb-4 h-24 w-24 md:h-32 md:w-32" icon="file-audio" />
+                <div style={{width: 220}} className="text-lg whitespace-pre-wrap">
                   {files[0] ?
                    files.length + " file" + (files.length > 1 ? "s": "") + " uploaded\n" + 
                   "Upload again to change files" 
@@ -166,8 +166,37 @@ export default function UploadMusic() {
         );
       case 1:
         return musicForm.childs[0] ? (
-          <div className="flex flex-wrap">
-            <div style={{width: "70%"}} className="p-2">
+          <div className="flex flex-wrap flex-row-reverse">
+            <div className="p-2 w-full md:w-[30%] flex items-center flex-col">
+              <label>
+                <img src={albumCover?albumCover:""} className="w-40 aspect-square object-cover" />
+                <input onChange={changeAlbumCover } type="file" hidden />
+              </label>
+              <DesktopMusicController src={files[songIndex]||""} />
+              {musicForm.childs.length > 1 && (
+                <table className="w-full mt-3">
+                  <thead>
+                    <tr className="text-slate-300 border-y border-slate-700">
+                      <th className="w-10 font-normal pl-3 py-1">#</th>
+                      <th className="text-left font-normal px-2 py-1">Title</th>
+                      <th className="text-right font-normal pr-7 py-1"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {musicForm.childs.map((x, i) => (
+                      <tr onClick={() => setSongIndex(i)} key={i} className={"hover:bg-white/[.05] cursor-pointer" + (songIndex===i?" bg-white/[.05]":"") }>
+                        <td className="w-10 pl-3 text-center py-1.5">
+                          {i +1 }
+                        </td>
+                        <td className="text-left px-2 py-1.5">{x.title}</td>
+                        <td className="text-right pr-7 py-1.5"><FontAwesomeIcon icon={x.title?"check":"circle-exclamation"} /></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+            <div className="p-2 w-full md:w-[70%]">
               <label>
                 <div>Title <span>*</span></div>
                 <input type="text" value={music.title} onChange={(e) => setMusic("title", e.target.value)} 
@@ -204,35 +233,6 @@ export default function UploadMusic() {
                   </div>
                 ))}
               </div>
-            </div>
-            <div style={{width: "30%"}} className="p-2">
-              <label>
-                <img src={albumCover?albumCover:""} className="w-full aspect-square object-cover" />
-                <input onChange={changeAlbumCover } type="file" hidden />
-              </label>
-              <DesktopMusicController src={files[songIndex]||""} />
-              {musicForm.childs.length > 1 && (
-                <table className="w-full mt-3">
-                  <thead>
-                    <tr className="text-slate-300 border-y border-slate-700">
-                      <th className="w-10 font-normal pl-3 py-1">#</th>
-                      <th className="text-left font-normal px-2 py-1">Title</th>
-                      <th className="text-right font-normal pr-7 py-1"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {musicForm.childs.map((x, i) => (
-                      <tr onClick={() => setSongIndex(i)} key={i} className={"hover:bg-white/[.05] cursor-pointer" + (songIndex===i?" bg-white/[.05]":"") }>
-                        <td className="w-10 pl-3 text-center py-1.5">
-                          {i +1 }
-                        </td>
-                        <td className="text-left px-2 py-1.5">{x.title}</td>
-                        <td className="text-right pr-7 py-1.5"><FontAwesomeIcon icon={x.title?"check":"circle-exclamation"} /></td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
             </div>
             <div className="w-full flex mt-4 justify-between">
               <Button variant="solid" onClick={() => setPage(0)}>Prev</Button>

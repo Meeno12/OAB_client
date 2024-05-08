@@ -49,7 +49,7 @@ export default function Auth() {
   }
 
   return (
-    <div className="bg-[#001820] min-h-screen flex justify-center items-center">
+    <div className="bg-[#001820] min-h-screen px-4 md:px-0 flex justify-center items-center">
       <Particles
         id="tsparticles"
         options={particleOptions}

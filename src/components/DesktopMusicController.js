@@ -67,7 +67,7 @@ export default function DesktopMusicController({src}) {
   }
 
   return (
-    <div className="flex flex-wrap mt-2.5">
+    <div className="flex flex-wrap w-full mt-2.5">
       <button onClick={() => togglePlay()} className="bg-slate-50 leading-none p-2">
         <FontAwesomeIcon style={{color: "#002634"}} className="w-8 h-8" icon="play" />
       </button>

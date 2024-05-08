@@ -4,10 +4,10 @@ import Paging from "../components/Paging"
 
 export default function UserFanart() {
   return (
-    <div className="mx-auto pt-5" style={{maxWidth: 1150}}>
-      <div className="pb-1 flex flex-wrap">
+    <div className="mx-auto pt-5 max-w-[469px] md:max-w-[695px] lg:max-w-[921px] xl:max-w-[1150px]">
+      <div className="pb-1 px-2 flex flex-wrap">
         {new Array(20).fill(true).map((_x, i) => (
-          <div key={i} className="w-1/5 p-1">
+          <div key={i} className="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-1">
             <div className="aspect-square transition-all relative overflow-hidden">
               <img src={bg} className="object-cover transition-all block w-full h-full hover:w-10px" />
               <div className="hover:opacity-100 opacity-0 transition-all ">

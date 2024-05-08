@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
 import Button from "../components/Button";
-import bg from "../assets/background.jpg";
 import Viewer from "react-viewer";
+import { useSelector } from "react-redux";
 
 export default function UploadFanart() {
   const [page, setPage] = useState(0);
@@ -15,10 +15,11 @@ export default function UploadFanart() {
   })
   const [fanartIndex, setFanartIndex] = useState(0);
   const [shownImages, setShownImages] = useState([]);
+  const isMobile = useSelector((state) => state.isMobile);
   const imageMenu = useRef(null)
 
   const setImage = (attr, val) => {
-    setFanartForm({ ...fanartForm, [attr]: val})
+    setFanartForm({ ...fanartForm, [attr]: val});
   }
 
   const dropFile = (e) => {
@@ -33,7 +34,7 @@ export default function UploadFanart() {
       });
     } else {
       [...e.dataTransfer.files].forEach((file, i) => {
-        uploadedFiles.push(file)
+        uploadedFiles.push(file);
       });
     }
     if (uploadedFiles.length < 0) return console.log("no file found");
@@ -57,15 +58,15 @@ export default function UploadFanart() {
     switch (page) {
       case 0:
         return (
-          <div className="px-8">
-            <label onDrop={dropFile} onDragOver={(e) => e.preventDefault()} className="w-full aspect-video border-4 border-dashed flex flex-col justify-center items-center">
+          <div className="md:px-8">
+            <label onDrop={dropFile} onDragOver={(e) => e.preventDefault()} className="w-full aspect-[9/16] md:aspect-video border-4 border-dashed flex flex-col justify-center items-center">
               <div className="text-center text-slate-400 relative">
-                <FontAwesomeIcon className="h-32 mb-4 w-32" icon="file-image" />
+                <FontAwesomeIcon className="mb-4 h-24 w-24 md:h-32 md:w-32" icon="file-image" />
                 <div className="text-lg whitespace-pre-wrap">
                   {files[0] ?
                    files.length + " file" + (files.length > 1 ? "s": "") + " uploaded\n" + 
                   "Upload again to change files" 
-                  : "Drag and drop or click to upload"}
+                  : isMobile ? "Select image to upload" : "Drag and drop or click to upload"}
                 </div>            
               </div>
               <input onChange={(e) => setFiles(e.target.files)} type="file" multiple hidden/>
@@ -81,11 +82,11 @@ export default function UploadFanart() {
       case 1:
         return (
           <div>
-            <div style={{minHeight: 480}} onClick={() => setShownImages([{src: imagePreview[fanartIndex], alt: ''}])} className="flex items-center justify-center cursor-zoom-in relative">
+            <div onClick={() => setShownImages([{src: imagePreview[fanartIndex], alt: ''}])} className="flex items-center justify-center min-h-[350px] md:min-h-[480px] cursor-zoom-in relative">
               <img className="max-h-screen" src={imagePreview[fanartIndex]} />
               {
                 imagePreview.length>1&& (
-                <div style={{transform: "translateX(-50%)", maxWidth: 80*5}} className="h-20 absolute bg-black/50 left-1/2 bottom-0">
+                <div style={{transform: "translateX(-50%)", maxWidth: 80* (isMobile?3:5)}} className="h-20 absolute bg-black/50 left-1/2 bottom-0">
                   <div className="relative h-full">
                     <div onClick={(e) => clickMenu(e)} className="absolute h-full flex items-center hover:bg-black/50 bg-black/25 transition cursor-pointer left-0 top-0">
                       <FontAwesomeIcon icon="chevron-left" className="mx-2"/>
@@ -106,7 +107,7 @@ export default function UploadFanart() {
               }
             </div>
             <div className="flex mt-8 pt-4 border-t border-slate-700 flex-wrap w-full">
-              <div className="w-1/2">
+              <div className="w-full md:w-1/2">
                 <label>
                   <div>Title</div>
                   <input type="text" value={fanartForm.title} onChange={(e) => setImage("title", e.target.value)} 
@@ -118,7 +119,7 @@ export default function UploadFanart() {
                   className="focus-visible:outline-none focus-visible:bg-[#13202c] py-1 px-2 bg-[#00202b] rounded w-full"></textarea>
                 </label>
               </div>
-              <div className="w-1/2 pl-2">
+              <div className="w-full md:w-1/2 md:pl-2">
                 <label>
                   <div>Tags</div>
                   <textarea value={fanartForm.tags} onChange={(e) => setImage('tags', e.target.value)} 
@@ -126,7 +127,7 @@ export default function UploadFanart() {
                 </label>
               </div>
             </div>
-            <div className="w-full flex mt-4 justify-between">
+            <div className="w-full flex mt-4 pt-4 justify-between">
               <Button variant="solid" onClick={() => setPage(0)}>Prev</Button>
               <Button variant="solid">Submit</Button>
             </div>
@@ -145,7 +146,7 @@ export default function UploadFanart() {
         onClose={() =>  setShownImages([]) }
         images={shownImages}
       />
-      <div className="mx-auto pt-20" style={{maxWidth: 1150}}>
+      <div className="mx-auto pt-20 px-4" style={{maxWidth: 1150}}>
         <div className="bg-[#002e3f] text-slate-50 p-5">
           {currentPage()}
         </div>

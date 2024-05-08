@@ -1,33 +1,24 @@
 import { Link, Outlet, useLocation } from "react-router-dom"
 import bg from "../assets/background.jpg"
-import Button from "../components/Button"
-import { useEffect } from "react";
 
 export default function UserPage() {
   const location = useLocation();
   const selected = location.pathname.split("/")[3];
   
-  useEffect(() => {
-    console.log(selected)
-  }, [])
-
   return (
     <div className="bg-[#001820] min-h-screen">
       <div style={{paddingTop: 68}}>
-        <img src={bg} className="object-cover w-screen" style={{height: 500}}/>
+        <img src={bg} className="object-cover w-screen h-36 md:h-[470px]"/>
         <div className="w-screen bg-[#002634]">
-          <div className="mx-auto px-10" style={{maxWidth: 1150}}>
-            <div className="flex">
-              <div style={{marginTop: -84}} className="border-[#002634] overflow-hidden border-4 rounded-full border-2">
-                <img src={bg} style={{}} className="h-36 aspect-square object-cover" />
+          <div className="mx-auto px-5 md:px-10" style={{maxWidth: 1150}}>
+            <div className="flex mb-3 md:mb-0">
+              <div className="mt-[-40px] md:mt-[-84px] border-[#002634] overflow-hidden border-4 rounded-full border-2">
+                <img src={bg} style={{}} className="h-28 md:h-36 aspect-square object-cover" />
               </div>
-              <div className="flex flex-1 items-center text-slate-50 justify-between">
+              <div className="flex-1 items-center text-slate-50">
                 <div className="ml-4">
                   <div className="text-2xl font-bold leading-none pt-1">Username</div>
                   <div className="text-slate-300">@handle</div>
-                </div>
-                <div>
-                  <Button variant="solid">Follow</Button>
                 </div>
               </div>
             </div>

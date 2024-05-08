@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 export default function Register() {
   return (
     <div style={{width:720, height:580, zIndex: 1}} className="flex flex-wrap rounded-xl overflow-hidden">
-      <div className="h-full relative w-2/5" >
+      <div className="h-full hidden md:block relative w-2/5" >
         <img src={bg} className="h-full w-full object-cover" />
         <div className="absolute top-0 left-0 bg-black/25 p-8 w-full h-full">
         </div>
       </div>
-      <div className="h-full w-3/5 bg-[#002e3f] text-slate-100 p-8 shadow-lg flex flex-col" >
+      <div className="h-full w-full md:w-3/5 bg-[#002e3f] text-slate-100 p-8 shadow-lg flex flex-col" >
         <div className="flex justify-between font-bold pb-8 border-b-2 border-slate-700 py-4 text-4xl">
           <span>Register</span>
           <Link to="/" className="p-2 h-9 w-9 hover:bg-black/25 transition-all" style={{lineHeight:0}}><FontAwesomeIcon className="w-5 h-5" icon="xmark" /></Link>

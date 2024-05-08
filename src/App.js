@@ -25,7 +25,7 @@ export default function App() {
   
 
   const hideNav = () => {
-    if (["/login", "/register"].includes(location.pathname)) return true;
+    if (["/auth/login", "/auth/register"].includes(location.pathname)) return true;
     return false;
   }
 

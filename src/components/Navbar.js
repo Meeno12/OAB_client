@@ -82,7 +82,7 @@ export default function Navbar() {
               </div>
             </div>
             : 
-            <Link to="/login">
+            <Link to="/auth/login">
               <Button>Login</Button>
             </Link>
           }

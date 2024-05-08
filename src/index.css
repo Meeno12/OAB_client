@@ -77,6 +77,10 @@ html, body {
 .login-btn:hover .slide-down {
   height: 100%;
 }
+.mouse-dust {
+  width: 110vw;
+  height: 110vh;
+}
 
 @font-face {
   font-family: 'koulen';

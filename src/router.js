@@ -14,6 +14,7 @@ import UploadMusic from "./pages/UploadMusic";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Auth from "./pages/Auth";
 
 const router = createBrowserRouter([
   {
@@ -25,12 +26,18 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: "/login",
-        element: <Login />
-      },
-      {
-        path: "/register",
-        element: <Register />
+        path: "/auth",
+        element: <Auth />,
+        children: [
+          {
+            path: "/auth/login",
+            element: <Login />
+          },
+          {
+            path: "/auth/register",
+            element: <Register />
+          },
+        ]
       },
       {
         path: "/fanart",

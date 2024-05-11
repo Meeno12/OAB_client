@@ -29,11 +29,17 @@ export default function Login() {
           <div className="w-full" style={{marginTop: -25}}>
             <label className="block pb-2">
               <div className="font-bold pl-2 pb-0.5 text-slate-200">Email</div>
-              <input type="text" className="focus-visible:outline-none border border-slate-800 focus-visible:bg-[#13202c] py-1 px-2 bg-[#00202b] rounded w-full" />
+              <div className="relative">
+                <FontAwesomeIcon icon="envelope" className="absolute top-1/2 pl-2 text-slate-500" style={{transform: "translateY(-50%)"}} />
+                <input type="text" className="pl-9 focus-visible:outline-none border border-slate-800 focus-visible:bg-[#13202c] py-1 px-2 bg-[#00202b] rounded w-full" />
+              </div>
             </label>
             <label className="block py-2">
               <div className="font-bold pl-2 pb-0.5 text-slate-200">Password</div>
-              <input type="text" className="focus-visible:outline-none border border-slate-800 focus-visible:bg-[#13202c] py-1 px-2 bg-[#00202b] rounded w-full" />
+              <div className="relative">
+                <FontAwesomeIcon icon="lock" className="absolute top-1/2 pl-2 text-slate-500" style={{transform: "translateY(-50%)"}} />
+                <input type="text" className="pl-9 focus-visible:outline-none border border-slate-800 focus-visible:bg-[#13202c] py-1 px-2 bg-[#00202b] rounded w-full" />
+              </div>
             </label>
             <Link to="#" className="underline text-right block">Forgot Password</Link>
             <button onClick={login} className="login-btn relative w-full py-1 my-4 text-xl bg-slate-100 text-[#002e3f] font-bold">

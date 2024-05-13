@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/OAB_client/static/css/main.f57ad261.css",
-    "main.js": "/OAB_client/static/js/main.520b0eee.js",
+    "main.js": "/OAB_client/static/js/main.4dfa0e07.js",
     "static/js/1927.1aafad7e.chunk.js": "/OAB_client/static/js/1927.1aafad7e.chunk.js",
     "static/js/7590.4b3423e7.chunk.js": "/OAB_client/static/js/7590.4b3423e7.chunk.js",
     "static/js/6725.bdc61d81.chunk.js": "/OAB_client/static/js/6725.bdc61d81.chunk.js",
@@ -77,7 +77,7 @@
     "static/media/wave.svg": "/OAB_client/static/media/wave.767bd97386de07bb0701d16cab29f8d8.svg",
     "index.html": "/OAB_client/index.html",
     "main.f57ad261.css.map": "/OAB_client/static/css/main.f57ad261.css.map",
-    "main.520b0eee.js.map": "/OAB_client/static/js/main.520b0eee.js.map",
+    "main.4dfa0e07.js.map": "/OAB_client/static/js/main.4dfa0e07.js.map",
     "1927.1aafad7e.chunk.js.map": "/OAB_client/static/js/1927.1aafad7e.chunk.js.map",
     "7590.4b3423e7.chunk.js.map": "/OAB_client/static/js/7590.4b3423e7.chunk.js.map",
     "6725.bdc61d81.chunk.js.map": "/OAB_client/static/js/6725.bdc61d81.chunk.js.map",
@@ -149,6 +149,6 @@
   },
   "entrypoints": [
     "static/css/main.f57ad261.css",
-    "static/js/main.520b0eee.js"
+    "static/js/main.4dfa0e07.js"
   ]
 }

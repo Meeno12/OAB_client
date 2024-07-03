@@ -11,7 +11,7 @@ export default function App() {
 
   useEffect(() => {
     const checkDevice = () => {
-      const isMobile1 = 768 >= window.innerWidth; 
+      const isMobile1 = 768 >= window.innerWidth;
       if (isMobile1 !== device) {
         dispatch({ type: "SET_DEVICE", payload: isMobile1 });
         setDevice(isMobile1);
@@ -20,36 +20,38 @@ export default function App() {
     checkDevice();
     window.addEventListener("resize", checkDevice);
     return () => {
-      window.removeEventListener("resize", checkDevice)
-    }
-  }, [device])
+      window.removeEventListener("resize", checkDevice);
+    };
+  }, [device]);
 
   useEffect(() => {
-    window.addEventListener("load", () => {
+    const closeLoading = () => {
+      console.log("test");
       const loadingScreen = document.getElementById("loading");
       loadingScreen.style.opacity = 0;
       setTimeout(() => {
-        setInit(true)
+        setInit(true);
         loadingScreen.remove();
-      }, 300)
-    })
+      }, 300);
+    };
+    if (document.readyState === "complete") closeLoading();
+    else window.addEventListener("load", closeLoading);
     const loggedIn = localStorage.getItem("user");
     if (loggedIn) {
-      dispatch({ type: "SET_USER", payload: true })
+      dispatch({ type: "SET_USER", payload: true });
     }
   }, []);
-  
 
   const hideNav = () => {
-    if (["/auth/login", "/auth/register"].includes(location.pathname)) return true;
+    if (["/auth/login", "/auth/register"].includes(location.pathname))
+      return true;
     return false;
-  }
-
+  };
 
   return (
     <div>
       {!hideNav() && <Navbar />}
-      <Outlet context={{init}}/>
+      <Outlet context={{ init }} />
     </div>
   );
 }

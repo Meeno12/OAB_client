@@ -23,7 +23,7 @@ export default function Music() {
 
   return (
     <div className="bg-[#001820] min-h-screen">
-      <div className="mx-auto pt-20 flex max-w-[469px] md:max-w-[695px] lg:max-w-[921px] xl:max-w-[1150px]">
+      <div className="mx-auto pt-20 flex flex-wrap max-w-[469px] md:max-w-[695px] lg:max-w-[921px] xl:max-w-[1150px]">
         <div className="w-full xl:w-[70%]">
           <div className="flex flex-wrap px-2">
             {new Array(20).fill(true).map((_x, i) => (

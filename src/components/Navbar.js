@@ -38,7 +38,7 @@ export default function Navbar() {
         <div className='flex items-center arial font-bold leading-1 text-lg absolute left-1/2 h-full top-0' style={{transform:"translateX(-50%)"}}>
           <Link className={'px-2 mx-3 transition-all border-t-2 border-b-2 ' + (navMenu === "fanart" ? "border-slate-50": "border-transparent")} to="/fanart">Fanart</Link>
           <Link className={'px-2 mx-3 transition-all border-t-2 border-b-2 ' + (navMenu === "music" ? "border-slate-50": "border-transparent")} to="/music">Music</Link>
-          <Link className={'px-2 mx-3 transition-all border-t-2 border-b-2 ' + (navMenu === "article" ? "border-slate-50": "border-transparent")} to="/article">Article</Link>
+          <Link className={'px-2 mx-3 transition-all border-t-2 border-b-2 ' + (navMenu === "event" ? "border-slate-50": "border-transparent")} to="/event">Event</Link>
           <Link className={'px-2 mx-3 transition-all border-t-2 border-b-2 ' + (navMenu === "info" ? "border-slate-50": "border-transparent")} to="/info">Info</Link>
         </div>
         <div className='flex items-center'>

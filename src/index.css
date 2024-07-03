@@ -2,35 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html,
+body {
   padding: 0;
-  margin: 0
+  margin: 0;
 }
 .koulen {
-  font-family: 'koulen';
+  font-family: "koulen";
 }
 .arial {
   font-family: Arial, Helvetica, sans-serif;
 }
-.truncate-2{
+.truncate-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.truncate-3{
+.truncate-3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.truncate-4{
+.truncate-4 {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.truncate-5{
+.truncate-5 {
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
@@ -40,14 +41,14 @@ html, body {
   padding-left: 6px;
   padding-right: 6px;
 }
-.tag:hover > .tag-el{
+.tag:hover > .tag-el {
   text-decoration: underline;
   color: #f8fafc;
 }
-.tooltip .tooltip-text{
+.tooltip .tooltip-text {
   visibility: hidden;
   width: fit-content;
-  background-color: #94A3B8;
+  background-color: #94a3b8;
   padding: 3px 20px;
   position: absolute;
   color: #002e3f;
@@ -61,7 +62,7 @@ html, body {
 .tooltip:hover .tooltip-text {
   visibility: visible;
 }
-.tooltip .tooltip-text::after{
+.tooltip .tooltip-text::after {
   content: "";
   position: absolute;
   bottom: 100%;
@@ -69,7 +70,7 @@ html, body {
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: transparent transparent #94A3B8 transparent;
+  border-color: transparent transparent #94a3b8 transparent;
 }
 .login-btn .slide-down {
   height: 0%;
@@ -81,8 +82,30 @@ html, body {
   width: 110vw;
   height: 110vh;
 }
+.event-home:hover .main-name {
+  margin-left: 10%;
+}
+.event-home:hover .chevron-right {
+  margin-left: 5px;
+}
 
 @font-face {
-  font-family: 'koulen';
-  src: url(./assets/Koulen-Regular.woff)   
+  font-family: "koulen";
+  src: url(./assets/Koulen-Regular.woff);
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.363);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #3b4757;
 }

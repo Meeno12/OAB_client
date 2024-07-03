@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Home from "./pages/Home";
 import Fanart from "./pages/Fanart";
-import Article from "./pages/Article";
 import Music from "./pages/Music";
 import FanartDetail from "./pages/FanartDetail";
 import MusicDetail from "./pages/MusicDetail";
@@ -15,6 +14,9 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Auth from "./pages/Auth";
+import Event from "./pages/Event";
+import EventCalendar from "./pages/EventCalendar";
+import EventChat from "./pages/EventChat";
 
 const router = createBrowserRouter([
   {
@@ -56,8 +58,18 @@ const router = createBrowserRouter([
         element: <MusicDetail />
       },
       {
-        path: "/article",
-        element: <Article />
+        path: "/event",
+        element: <Event />,
+        children: [
+          {
+            path: "/event/",
+            element: <EventCalendar />
+          },
+          {
+            path: "/event/chat/:id",
+            element: <EventChat />
+          }
+        ]
       },
       {
         path: "/user/:handle",
